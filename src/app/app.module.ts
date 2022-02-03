@@ -7,11 +7,14 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import 'hammerjs';
 
 import { AppComponent } from './app.component';
-import { ContactComponent } from './contact/contact.component';
+//import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
 import { ShopComponent } from './shop/shop.component';
 import { AboutComponent } from './about/about.component';
@@ -23,7 +26,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 @NgModule({
   declarations: [
     AppComponent,
-    ContactComponent,
+    //ContactComponent,
     HomeComponent,
     ShopComponent,
     AboutComponent,
@@ -36,7 +39,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
       { path: 'home',  component: HomeComponent },
       { path: 'about',     component: AboutComponent },
       { path: 'shop',     component: ShopComponent },
-      { path: 'contact',     component: ContactComponent },
+      { path: 'contact',     component: HomeComponent },
       { path: '', redirectTo: '/home', pathMatch: 'full' }
     ]),
     BrowserAnimationsModule,
@@ -44,7 +47,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MatListModule,
     MatButtonModule,
     FlexLayoutModule,
-    FontAwesomeModule
+    MatSelectModule,
+    MatSlideToggleModule,
+    FontAwesomeModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
