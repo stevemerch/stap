@@ -13,34 +13,35 @@
         <div fxFlex="50" fxFlexOffset="20px">
           <h4>Our Address</h4>
           <address>
-            121, Clear Water Bay Road<br>
-            Clear Water Bay, Kowloon<br>
-            HONG KONG<br>
-            <i class="fa fa-phone"></i>: +852 1234 5678<br>
-            <i class="fa fa-fax"></i>: +852 8765 4321<br>
-            <i class="fa fa-envelope"></i>:
-            <a href="mailto:confusion@food.net">confusion@food.net</a>
+            Need to add address<br>
+            including city, state<br>
+            and country etc.<br>
+            <i><fa-icon [icon]="faPhoneSquare"></fa-icon></i>: +852 1234 5678<br>
+            <i><fa-icon [icon]="faMailBulk"></fa-icon></i>:
+            <a href="mailto:confusion@food.net">target@email.template</a>
           </address>
           <p></p>
         </div>
         <div fxFlex="40">
           <h4>Map of our Location</h4>
+          <p>add google map location</p>
         </div>
       </div>
     </div>
     <div fxFlex="80" fxFlexOffset="20px" class="form-size">      
-      <form novalidate [formGroup]="myForm" #fform="ngForm" (ngSubmit)="onSubmit()"
-        [hidden]="feedback || spinnerVisibility">
+      <!--form novalidate [formGroup]="myForm" #fform="ngForm" (ngSubmit)="onSubmit()"
+        [hidden]="feedback || spinnerVisibility" action="https://formspree.io/yeet1122334455@protonmail.com" method="POST"-->
+        <form novalidate [formGroup]="myForm" action="https://formspree.io/yeet1122334455@protonmail.com" method="POST">
         <h3>Send us your Feedback</h3>
         <p>
           <mat-form-field class="half-width">
-            <input matInput formControlName="firstname" placeholder="First Name" type="text" required>
+            <input matInput name="firstname" formControlName="firstname" placeholder="First Name" type="text" required>
             <mat-error *ngIf="formErrors.firstname">
               {{formErrors.firstname}}
             </mat-error>
           </mat-form-field>
           <mat-form-field class="half-width">
-            <input matInput formControlName="lastname" placeholder="Last Name" type="text" required>
+            <input matInput name="lastname" formControlName="lastname" placeholder="Last Name" type="text" required>
             <mat-error *ngIf="formErrors.lastname">
               {{formErrors.lastname}}
             </mat-error>
@@ -48,7 +49,7 @@
         </p>
         <p>
           <mat-form-field class="half-width">
-            <input matInput formControlName="email" placeholder="Email" type="email" email required>
+            <input matInput name="email" formControlName="email" placeholder="Email" type="email" email required>
             <mat-error *ngIf="formErrors.email">
               {{formErrors.email}}
             </mat-error>
@@ -56,11 +57,11 @@
         </p>
         <p>
           <mat-form-field class="full-width">
-            <textarea matInput formControlName="message" placeholder="Your Feedback" rows=12>
+            <textarea matInput name="message" formControlName="message" placeholder="Your Feedback" rows=12>
             </textarea>
           </mat-form-field>
         </p>
-        <p><button type="submit" mat-button class="background-primary text-floral-white"
+        <p><button type="submit" name="submit " mat-button class="background-primary text-floral-white"
             [disabled]="myForm.invalid">Submit</button></p>
       </form>
       <div [hidden]="!spinnerVisibility">
@@ -68,6 +69,7 @@
         <mat-spinner></mat-spinner>
       </div>
       <div *ngIf="feedback || spinnerVisibility">
+        <!--if submission.good, display thanks and response-->
         <h3>Thank you for submitting!</h3>
         <p>
           <span>First Name:&nbsp;{{ feedbackCopy.firstname }}</span>

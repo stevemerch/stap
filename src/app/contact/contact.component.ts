@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Feedback } from '../shared/feedback';
+import { faMailBulk, faPhoneSquare } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-contact',
@@ -9,6 +11,8 @@ import { Feedback } from '../shared/feedback';
 })
 
 export class ContactComponent implements OnInit{
+  faMailBulk = faMailBulk;
+  faPhoneSquare = faPhoneSquare;
   myForm: FormGroup;
   feedback: Feedback;
   feedbackCopy: Feedback = <Feedback>{};
