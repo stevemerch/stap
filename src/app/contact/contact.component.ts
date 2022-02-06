@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Feedback } from '../shared/feedback';
 import { faMailBulk, faPhoneSquare } from '@fortawesome/free-solid-svg-icons';
@@ -13,87 +14,56 @@ import { faMailBulk, faPhoneSquare } from '@fortawesome/free-solid-svg-icons';
 export class ContactComponent implements OnInit{
   faMailBulk = faMailBulk;
   faPhoneSquare = faPhoneSquare;
-  myForm: FormGroup;
-  feedback: Feedback;
-  feedbackCopy: Feedback = <Feedback>{};
-  spinnerVisibility: boolean = false;
-  errMess: string;
-  @ViewChild('fform') feedbackFormDirective: { resetForm: () => void; };
-
-  formErrors: any = {
-         'firstname': '',
-         'lastname': '',
-         'email': ''
-       };
-
-       validationMessages: any = {
-         'firstname': {
-           'required': 'First Name is required.',
-           'minlength': 'First Name must be at least 2 characters long.',
-           'maxlength': 'FirstName cannot be more than 25 characters long.'
-         },
-         'lastname': {
-           'required': 'Last Name is required.',
-           'minlength': 'Last Name must be at least 2 characters long.',
-           'maxlength': 'Last Name cannot be more than 25 characters long.'
-         },
-         'email': {
-           'required': 'Email is required.',
-           'email': 'Email not in valid format.'
-         },
-       };
-
-  constructor(private fb: FormBuilder){
-    this.createForm();
+  form: FormGroup;
+  firstname: FormControl = new FormControl("", [Validators.required]);
+  lastname: FormControl = new FormControl("", [Validators.required]);
+  email: FormControl = new FormControl("", [Validators.required, Validators.email]);
+  message: FormControl = new FormControl("", [Validators.required, Validators.maxLength(256)]);
+  honeypot: FormControl = new FormControl(""); // we will use this to prevent spam
+  submitted: boolean = false; // show and hide the success message
+  isLoading: boolean = false; // disable the submit button if we're loading
+  responseMessage: string; // the response message to show to the user
+  constructor(private formBuilder: FormBuilder, private http: HttpClient) {
+    this.form = this.formBuilder.group({
+      firstname: this.firstname,
+      lastname: this.lastname,
+      email: this.email,
+      message: this.message,
+      honeypot: this.honeypot
+    });
   }
-
   ngOnInit(): void {
   }
-  createForm(){
-    this.myForm = this.fb.group({
-      firstname: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
-      lastname: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
-      email: ['', [Validators.required, Validators.email]],
-      message: ''
-    });
-
-    this.myForm.valueChanges
-      .subscribe(data => this.onValueChanged(data));
-
-    this.onValueChanged(); //(re)set form validation messages
-  }
-
-  onValueChanged(data?: any) {
-    if (!this.myForm) { return; }
-    const form = this.myForm;
-    for (const field in this.formErrors) {
-      if (this.formErrors.hasOwnProperty(field)) {
-        //clear previous error message (if any)
-        this.formErrors[field] = '';
-        const control = form.get(field);
-        if (control && control.dirty && !control.valid) {
-          const messages = this.validationMessages[field];
-          for (const key in control.errors) {
-            if (control.errors.hasOwnProperty(key)) {
-              this.formErrors[field] += messages[key] + ' ';
-            }
+  onSubmit() {
+    if (this.form.status == "VALID" && this.honeypot.value == "") {
+      this.form.disable(); // disable the form if it's valid to disable multiple submissions
+      var formData: any = new FormData();
+      formData.append("name", this.form.get("name").value);
+      formData.append("email", this.form.get("email").value);
+      formData.append("message", this.form.get("message").value);
+      this.isLoading = true; // sending the post request async so it's in progress
+      this.submitted = false; // hide the response message on multiple submits
+      this.http.post("YOUR GOOGLE WEB APP URL HERE", formData).subscribe(
+        (response) => {
+          // choose the response message
+          if (response["result"] == "success") {
+            this.responseMessage = "Thanks for the message! I'll get back to you soon!";
+          } else {
+            this.responseMessage = "Oops! Something went wrong... Reload the page and try again.";
           }
+          this.form.enable(); // re enable the form after a success
+          this.submitted = true; // show the response message
+          this.isLoading = false; // re enable the submit button
+          console.log(response);
+        },
+        (error) => {
+          this.responseMessage = "Oops! An error occurred... Reload the page and try again.";
+          this.form.enable(); // re enable the form after a success
+          this.submitted = true; // show the response message
+          this.isLoading = false; // re enable the submit button
+          console.log(error);
         }
-      }
+      );
     }
-  }
-    onSubmit() {
-      this.spinnerVisibility = true;
-      this.feedbackCopy = this.myForm.value;
-
-      // show spinner until comfirmation || don't at all
-      console.log(this.feedbackCopy);
-      this.myForm.reset({
-               firstname: '',
-               lastname: '',
-               email: '',
-               message: ''
-             });
-      this.feedbackFormDirective.resetForm();
   }
 }

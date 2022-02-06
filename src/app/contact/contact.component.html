@@ -28,20 +28,20 @@
         </div>
       </div>
     </div>
-    <div fxFlex="80" fxFlexOffset="20px" class="form-size">      
-      <!--form novalidate [formGroup]="myForm" #fform="ngForm" (ngSubmit)="onSubmit()"
-        [hidden]="feedback || spinnerVisibility" action="https://formspree.io/yeet1122334455@protonmail.com" method="POST"-->
-        <form novalidate [formGroup]="myForm" action="https://formspree.io/yeet1122334455@protonmail.com" method="POST">
+    <div fxFlex="80" fxFlexOffset="20px" class="form-size">
+      <form class="contact" [formGroup]="form" method="post" (ngSubmit)="onSubmit()">
         <h3>Send us your Feedback</h3>
         <p>
           <mat-form-field class="half-width">
-            <input matInput name="firstname" formControlName="firstname" placeholder="First Name" type="text" required>
+            First Name
+            <input matInput [formControl]="firstname" name="firstname" formControlName="firstname" placeholder="First Name" type="text" required>
             <mat-error *ngIf="formErrors.firstname">
               {{formErrors.firstname}}
             </mat-error>
           </mat-form-field>
           <mat-form-field class="half-width">
-            <input matInput name="lastname" formControlName="lastname" placeholder="Last Name" type="text" required>
+            Last Name
+            <input matInput [formControl]="lastname" name="lastname" formControlName="lastname" placeholder="Last Name" type="text" required>
             <mat-error *ngIf="formErrors.lastname">
               {{formErrors.lastname}}
             </mat-error>
@@ -49,7 +49,8 @@
         </p>
         <p>
           <mat-form-field class="half-width">
-            <input matInput name="email" formControlName="email" placeholder="Email" type="email" email required>
+            Email
+            <input matInput [formControl]="email" name="email" formControlName="email" placeholder="Email" type="email" email required>
             <mat-error *ngIf="formErrors.email">
               {{formErrors.email}}
             </mat-error>
@@ -57,13 +58,20 @@
         </p>
         <p>
           <mat-form-field class="full-width">
+            Message
             <textarea matInput name="message" formControlName="message" placeholder="Your Feedback" rows=12>
             </textarea>
           </mat-form-field>
         </p>
         <p><button type="submit" name="submit " mat-button class="background-primary text-floral-white"
             [disabled]="myForm.invalid">Submit</button></p>
-      </form>
+        
+        <button [disabled]="isLoading" class="submit" type="submit">Submit</button>
+        <input [formControl]="honeypot" class="hidden" type="text" />
+        <div [ngClass]="!submitted? 'hidden' : 'visible'" class="center-text">
+          <span>{{responseMessage}}</span>
+        </div>
+      </form>      
       <div [hidden]="!spinnerVisibility">
         <h3>Submitting Form</h3>
         <mat-spinner></mat-spinner>
