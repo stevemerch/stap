@@ -29,15 +29,11 @@
       </div>
     </div>
     <div fxFlex="80" fxFlexOffset="20px" class="form-size">
-      <form class="contact" [formGroup]="form" method="post" (ngSubmit)="onSubmit()">
+      <form class="contact" [formGroup]="form" method="post" (ngSubmit)="onSubmit()" *ngIf="!submitted">
         <h3>Send us your Feedback</h3>
         <p>
           <mat-form-field class="half-width">
-            <input matInput [formControl]="firstname" name="firstname" formControlName="firstname" placeholder="First Name" type="text" required>
-          </mat-form-field>
-          <mat-form-field class="half-width">
-            <input matInput [formControl]="lastname" name="lastname" formControlName="lastname" placeholder="Last Name" type="text" required>
-            
+            <input matInput [formControl]="name" name="name" formControlName="name" placeholder="Full Name" type="text" required>
           </mat-form-field>
         </p>
         <p>
@@ -51,35 +47,12 @@
             <textarea matInput name="message" formControlName="message" placeholder="Your Feedback" rows=12>
             </textarea>
           </mat-form-field>
-        </p>
-        
-        <button mat-button [disabled]="isLoading" class="submit" type="submit">Submit</button>
+        </p><p>
+        <button type="submit" name="submit"  [disabled]="isLoading" mat-button class="background-primary text-floral-white">Submit</button></p>
         <input [formControl]="honeypot" class="hidden" type="text" />
-        <div [ngClass]="!submitted? 'hidden' : 'visible'" class="center-text">
-          <span>{{responseMessage}}</span>
-        </div>
       </form>      
-      <!--div [hidden]="!spinnerVisibility">
-        <h3>Submitting Form</h3>
-        <mat-spinner></mat-spinner>
+      <div [ngClass]="!submitted? 'hidden' : 'visible'" class="center-text">
+        <div fxFlex>
+        <span>"Thanks, {{responseMessage}} for your feeback!"</span></div>
       </div>
-      <div *ngIf="feedback || spinnerVisibility"-->
-        <!--if submission.good, display thanks and response-->
-        <!--h3>Thank you for submitting!</h3>
-        <p>
-          <span>First Name:&nbsp;{{ feedbackCopy.firstname }}</span>
-        </p>
-        <p>
-          <span>Last Name:&nbsp;{{ feedbackCopy.lastname }}</span>
-        </p>
-        <p>
-          <span>Email:&nbsp;{{ feedbackCopy.email }}</span>
-        </p>
-        <p>
-          <span>Feedback:&nbsp;{{ feedbackCopy.message }}</span>
-        </p>
-      </div>
-    </div>
-    
-  </div-->
   

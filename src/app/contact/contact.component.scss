@@ -11,5 +11,11 @@
   }
   
   .hidden {
-    display: none
+    display: none;
   }
+  .visible {
+	display: block;
+}
+.center-text {
+	text-align: center;
+}
