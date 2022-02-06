@@ -17,10 +17,11 @@ export class ContactComponent implements OnInit{
   form: FormGroup;
   name: FormControl = new FormControl("", [Validators.required]);
   email: FormControl = new FormControl("", [Validators.required, Validators.email]);
-  message: FormControl = new FormControl("", [Validators.required, Validators.maxLength(256)]);
+  message: FormControl = new FormControl("", [Validators.required, Validators.maxLength(512)]);
   honeypot: FormControl = new FormControl(""); // we will use this to prevent spam
   submitted: boolean = false; // show and hide the success message
   isLoading: boolean = false; // disable the submit button if we're loading
+  responseName: string;
   responseMessage: string; // the response message to show to the user
   constructor(private formBuilder: FormBuilder, private http: HttpClient) {
     this.form = this.formBuilder.group({
@@ -41,13 +42,20 @@ export class ContactComponent implements OnInit{
       formData.append("message", this.form.get("message")?.value);
       this.isLoading = true; // sending the post request async so it's in progress
       this.submitted = false; // hide the response message on multiple submits
+      this.responseName = this.form.get("name")?.value;
+      this.form.reset();
       this.http.post("https://formspree.io/f/xjvlyjod", formData).subscribe(
         (response) => {
+          /*
+          when click submit -> display spinner
+          when get reponse (good || error) display message in responseMessage
+          */
+
           this.form.enable(); // re enable the form after a success
           this.submitted = true; // show the response message
           this.isLoading = false; // re enable the submit button
           console.log(response);
-          this.responseMessage = this.form.get("name")?.value;
+          this.responseMessage = "Thanks, " + this.responseName + "for your feedback!";
         },
         (error) => {
           this.responseMessage = "Oops! An error occurred... Reload the page and try again.";

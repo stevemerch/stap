@@ -1,58 +1,75 @@
 <div class="container" fxLayout="column" fxLayoutGap="10px">
 
-    <div fxFlex>
-      <div>
-        <h3>Contact Us</h3>
-        <hr>
+  <div fxFlex>
+    <div>
+      <h3>Contact Us</h3>
+      <hr>
+    </div>
+  </div>
+
+  <div fxFlex>
+    <h3>Location Information</h3>
+    <div fxLayout="column" fxLayout.gt-sm="row">
+      <div fxFlex="50" fxFlexOffset="20px">
+        <h4>Our Address</h4>
+        <address>
+          Need to add address<br>
+          including city, state<br>
+          and country etc.<br>
+          <i>
+            <fa-icon [icon]="faPhoneSquare"></fa-icon>
+          </i>: +852 1234 5678<br>
+          <i>
+            <fa-icon [icon]="faMailBulk"></fa-icon>
+          </i>:
+          <a href="mailto:confusion@food.net">target@email.template</a>
+        </address>
+        <p></p>
+      </div>
+      <div fxFlex="40">
+        <h4>Map of our Location</h4>
+        <p>add google map location</p>
       </div>
     </div>
-  
-    <div fxFlex>
-      <h3>Location Information</h3>
-      <div fxLayout="column" fxLayout.gt-sm="row">
-        <div fxFlex="50" fxFlexOffset="20px">
-          <h4>Our Address</h4>
-          <address>
-            Need to add address<br>
-            including city, state<br>
-            and country etc.<br>
-            <i><fa-icon [icon]="faPhoneSquare"></fa-icon></i>: +852 1234 5678<br>
-            <i><fa-icon [icon]="faMailBulk"></fa-icon></i>:
-            <a href="mailto:confusion@food.net">target@email.template</a>
-          </address>
-          <p></p>
-        </div>
-        <div fxFlex="40">
-          <h4>Map of our Location</h4>
-          <p>add google map location</p>
-        </div>
-      </div>
-    </div>
-    <div fxFlex="80" fxFlexOffset="20px" class="form-size">
-      <form class="contact" [formGroup]="form" method="post" (ngSubmit)="onSubmit()" *ngIf="!submitted">
-        <h3>Send us your Feedback</h3>
-        <p>
-          <mat-form-field class="half-width">
-            <input matInput [formControl]="name" name="name" formControlName="name" placeholder="Full Name" type="text" required>
-          </mat-form-field>
-        </p>
-        <p>
-          <mat-form-field class="half-width">
-            <input matInput [formControl]="email" name="email" formControlName="email" placeholder="Email" type="email" email required>
-            
-          </mat-form-field>
-        </p>
-        <p>
-          <mat-form-field class="full-width">
-            <textarea matInput name="message" formControlName="message" placeholder="Your Feedback" rows=12>
+  </div>
+  <div fxFlex="80" fxFlexOffset="20px" class="form-size">
+    <form class="contact" [formGroup]="form" method="post" (ngSubmit)="onSubmit()" [hidden]="submitted || isLoading">
+      <h3>Send us your Feedback</h3>
+      <p>
+        <mat-form-field class="half-width">
+          <input matInput [formControl]="name" name="name" formControlName="name" placeholder="Full Name" type="text"
+            required>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="half-width">
+          <input matInput [formControl]="email" name="email" formControlName="email" placeholder="Email" type="email"
+            email required>
+
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="full-width">
+          <textarea matInput name="message" formControlName="message" placeholder="Your Feedback" rows=12>
             </textarea>
-          </mat-form-field>
-        </p><p>
-        <button type="submit" name="submit"  [disabled]="isLoading" mat-button class="background-primary text-floral-white">Submit</button></p>
-        <input [formControl]="honeypot" class="hidden" type="text" />
-      </form>      
-      <div [ngClass]="!submitted? 'hidden' : 'visible'" class="center-text">
-        <div fxFlex>
-        <span>"Thanks, {{responseMessage}} for your feeback!"</span></div>
+        </mat-form-field>
+      </p>
+      <p>
+        <button type="submit" name="submit" [disabled]="isLoading" mat-button
+          class="background-primary text-floral-white">Submit</button></p>
+      <input [formControl]="honeypot" class="hidden" type="text" />
+    </form>
+    <div>
+      <div fxFlex>
+        <div fxLayoutAlign="center center">
+          <div [hidden]="!isLoading">
+            <h3>Submitting Form</h3>
+            <mat-spinner></mat-spinner>
+          </div>
+          <div *ngIf="submitted" class="center-text">
+            <span>
+              <h1 class="mat-display-1">{{responseMessage}}</h1>
+            </span>
+          </div>
+        </div>
       </div>
-  
