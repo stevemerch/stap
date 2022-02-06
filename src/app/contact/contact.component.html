@@ -33,52 +33,39 @@
         <h3>Send us your Feedback</h3>
         <p>
           <mat-form-field class="half-width">
-            First Name
             <input matInput [formControl]="firstname" name="firstname" formControlName="firstname" placeholder="First Name" type="text" required>
-            <mat-error *ngIf="formErrors.firstname">
-              {{formErrors.firstname}}
-            </mat-error>
           </mat-form-field>
           <mat-form-field class="half-width">
-            Last Name
             <input matInput [formControl]="lastname" name="lastname" formControlName="lastname" placeholder="Last Name" type="text" required>
-            <mat-error *ngIf="formErrors.lastname">
-              {{formErrors.lastname}}
-            </mat-error>
+            
           </mat-form-field>
         </p>
         <p>
           <mat-form-field class="half-width">
-            Email
             <input matInput [formControl]="email" name="email" formControlName="email" placeholder="Email" type="email" email required>
-            <mat-error *ngIf="formErrors.email">
-              {{formErrors.email}}
-            </mat-error>
+            
           </mat-form-field>
         </p>
         <p>
           <mat-form-field class="full-width">
-            Message
             <textarea matInput name="message" formControlName="message" placeholder="Your Feedback" rows=12>
             </textarea>
           </mat-form-field>
         </p>
-        <p><button type="submit" name="submit " mat-button class="background-primary text-floral-white"
-            [disabled]="myForm.invalid">Submit</button></p>
         
-        <button [disabled]="isLoading" class="submit" type="submit">Submit</button>
+        <button mat-button [disabled]="isLoading" class="submit" type="submit">Submit</button>
         <input [formControl]="honeypot" class="hidden" type="text" />
         <div [ngClass]="!submitted? 'hidden' : 'visible'" class="center-text">
           <span>{{responseMessage}}</span>
         </div>
       </form>      
-      <div [hidden]="!spinnerVisibility">
+      <!--div [hidden]="!spinnerVisibility">
         <h3>Submitting Form</h3>
         <mat-spinner></mat-spinner>
       </div>
-      <div *ngIf="feedback || spinnerVisibility">
+      <div *ngIf="feedback || spinnerVisibility"-->
         <!--if submission.good, display thanks and response-->
-        <h3>Thank you for submitting!</h3>
+        <!--h3>Thank you for submitting!</h3>
         <p>
           <span>First Name:&nbsp;{{ feedbackCopy.firstname }}</span>
         </p>
@@ -94,5 +81,5 @@
       </div>
     </div>
     
-  </div>
+  </div-->
   
