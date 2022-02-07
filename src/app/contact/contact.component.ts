@@ -55,7 +55,7 @@ export class ContactComponent implements OnInit{
           this.submitted = true; // show the response message
           this.isLoading = false; // re enable the submit button
           console.log(response);
-          this.responseMessage = "Thanks, " + this.responseName + "for your feedback!";
+          this.responseMessage = "Thanks, " + this.responseName + " for your feedback!";
         },
         (error) => {
           this.responseMessage = "Oops! An error occurred... Reload the page and try again.";

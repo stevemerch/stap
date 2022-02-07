@@ -24,6 +24,7 @@ import { AboutComponent } from './about/about.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FourComponent } from './four/four.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ShopComponent,
     AboutComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    FourComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
       { path: 'about',     component: AboutComponent },
       { path: 'shop',     component: ShopComponent },
       { path: 'contact',     component: ContactComponent },
-      { path: '', redirectTo: '/home', pathMatch: 'full' }
+      { path: '', redirectTo: '/home', pathMatch: 'full' },
+      { path: '**', pathMatch: 'full', component: FourComponent }
     ]),
     BrowserAnimationsModule,
     MatToolbarModule,
