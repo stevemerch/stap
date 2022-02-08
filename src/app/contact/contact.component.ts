@@ -1,7 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import { Feedback } from '../shared/feedback';
+import { FormBuilder, FormGroup, FormControl, Validators, FormGroupDirective } from '@angular/forms';
 import { faMailBulk, faPhoneSquare } from '@fortawesome/free-solid-svg-icons';
 
 
@@ -15,15 +14,23 @@ export class ContactComponent implements OnInit{
   faMailBulk = faMailBulk;
   faPhoneSquare = faPhoneSquare;
   form: FormGroup;
-  name: FormControl = new FormControl("", [Validators.required]);
-  email: FormControl = new FormControl("", [Validators.required, Validators.email]);
-  message: FormControl = new FormControl("", [Validators.required, Validators.maxLength(512)]);
-  honeypot: FormControl = new FormControl(""); // we will use this to prevent spam
+  name: FormControl; 
+  email: FormControl;
+  message: FormControl;
+  honeypot: FormControl; // we will use this to prevent spam
   submitted: boolean = false; // show and hide the success message
   isLoading: boolean = false; // disable the submit button if we're loading
   responseName: string;
   responseMessage: string; // the response message to show to the user
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) {
+  constructor(private formBuilder: FormBuilder, private http: HttpClient){
+    this.initForm();
+  }
+
+  initForm(){
+  this.name = new FormControl("", [Validators.required]);
+  this.email = new FormControl("", [Validators.required, Validators.email]);
+  this.message= new FormControl("", [Validators.required, Validators.maxLength(512)]);
+  this.honeypot = new FormControl(""); // we will use this to prevent spam
     this.form = this.formBuilder.group({
       name: this.name,
       email: this.email,
@@ -31,9 +38,11 @@ export class ContactComponent implements OnInit{
       honeypot: this.honeypot
     });
   }
+  
   ngOnInit(): void {
   }
-  onSubmit() {
+
+  public onSubmit(formDirective: FormGroupDirective) {
     if (this.form.status == "VALID" && this.honeypot.value == "") {
       this.form.disable(); // disable the form if it's valid to disable multiple submissions
       var formData: any = new FormData();
@@ -44,12 +53,9 @@ export class ContactComponent implements OnInit{
       this.submitted = false; // hide the response message on multiple submits
       this.responseName = this.form.get("name")?.value;
       this.form.reset();
+      formDirective.resetForm()
       this.http.post("https://formspree.io/f/xjvlyjod", formData).subscribe(
         (response) => {
-          /*
-          when click submit -> display spinner
-          when get reponse (good || error) display message in responseMessage
-          */
 
           this.form.enable(); // re enable the form after a success
           this.submitted = true; // show the response message
@@ -66,5 +72,10 @@ export class ContactComponent implements OnInit{
         }
       );
     }
+  }
+  resetForm(){
+    this.initForm()
+    this.isLoading = false;
+    this.submitted = false;
   }
 }
