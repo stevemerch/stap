@@ -1,8 +1,27 @@
-<h1>Basic outline...</h1>
+<div>
+  <div>
+    <h1>About Us</h1>
+  </div>
+  <div>
+    <div fxFlex *ngIf="about">
+      <mat-card *ngFor="let a of about">
+        <mat-card-title>
+          <h4>{{a.title}}</h4>
+        </mat-card-title>
+        <mat-card-content>
+            <img height="200px" src="{{ a.image }}" alt={{a.alt}}>
+          <p>
+            {{a.text}}
+          </p>
+        </mat-card-content>
+      </mat-card>
+      
+     
+    </div>
+  </div>
+</div>
 <ul>
-    <li>History of steve</li>
-    <li>about the creator</li>
-    <li>Where are we going (our vision)</li>
+  <li>History of steve</li>
+  <li>about the creator</li>
+  <li>Where are we going (our vision)</li>
 </ul>
-<p>image + text as card</p>
-<p></p>

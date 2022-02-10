@@ -1,5 +1,3 @@
-- fix spinner margin bottom
 - fix margin bottom of navbar || remove background color
-- add button to resend feedback after form is done
 - add meta tags
-- change subsribe (in cantact.ts) to observable
+- change subscribe (in contact.ts) to observable

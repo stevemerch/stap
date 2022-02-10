@@ -1,0 +1,13 @@
+$size: 200px;
+
+img {
+    border-radius: 5%;
+    margin-right: 1em;
+    width: $size;
+    height: $size;
+}
+
+.mat-card-content {
+    display: flex;
+    justify-content: space-between;
+}

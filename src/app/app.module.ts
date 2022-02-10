@@ -12,6 +12,9 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatInputModule } from '@angular/material/input';
+import { MatGridListModule } from '@angular/material/grid-list';
+import {MatCardModule} from '@angular/material/card'; 
+
 
 
 import 'hammerjs';
@@ -55,9 +58,11 @@ import { FourComponent } from './four/four.component';
     MatButtonModule,
     FlexLayoutModule,
     MatSelectModule,
+    MatCardModule,
     MatSlideToggleModule,
     FontAwesomeModule,
     ReactiveFormsModule,
+    MatGridListModule,
     MatProgressSpinnerModule,
     MatInputModule
   ],
