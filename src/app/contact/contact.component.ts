@@ -1,20 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { FormBuilder, FormGroup, FormControl, Validators, FormGroupDirective } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  FormControl,
+  Validators,
+  FormGroupDirective,
+} from '@angular/forms';
 import { faMailBulk, faPhoneSquare } from '@fortawesome/free-solid-svg-icons';
-
 
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.scss']
+  styleUrls: ['./contact.component.scss'],
 })
-
-export class ContactComponent implements OnInit{
+export class ContactComponent implements OnInit {
   faMailBulk = faMailBulk;
   faPhoneSquare = faPhoneSquare;
   form: FormGroup;
-  name: FormControl; 
+  firstname: FormControl;
+  lastname: FormControl;
   email: FormControl;
   message: FormControl;
   honeypot: FormControl; // we will use this to prevent spam
@@ -22,59 +27,65 @@ export class ContactComponent implements OnInit{
   isLoading: boolean = false; // disable the submit button if we're loading
   responseName: string;
   responseMessage: string; // the response message to show to the user
-  constructor(private formBuilder: FormBuilder, private http: HttpClient){
+  constructor(private formBuilder: FormBuilder, private http: HttpClient) {
     this.initForm();
   }
 
-  initForm(){
-  this.name = new FormControl("", [Validators.required]);
-  this.email = new FormControl("", [Validators.required, Validators.email]);
-  this.message= new FormControl("", [Validators.required, Validators.maxLength(512)]);
-  this.honeypot = new FormControl(""); // we will use this to prevent spam
+  initForm() {
+    this.firstname = new FormControl('', [Validators.required]);
+    this.lastname = new FormControl('', [Validators.required]);
+    this.email = new FormControl('', [Validators.required, Validators.email]);
+    this.message = new FormControl('', [
+      Validators.required,
+      Validators.maxLength(512),
+    ]);
+    this.honeypot = new FormControl(''); // we will use this to prevent spam
     this.form = this.formBuilder.group({
-      name: this.name,
+      firstname: this.firstname,
+      lastname: this.lastname,
       email: this.email,
       message: this.message,
-      honeypot: this.honeypot
+      honeypot: this.honeypot,
     });
   }
-  
-  ngOnInit(): void {
-  }
+
+  ngOnInit(): void {}
 
   public onSubmit(formDirective: FormGroupDirective) {
-    if (this.form.status == "VALID" && this.honeypot.value == "") {
+    if (this.form.status == 'VALID' && this.honeypot.value == '') {
       this.form.disable(); // disable the form if it's valid to disable multiple submissions
       var formData: any = new FormData();
-      formData.append("name", this.form.get("name")?.value);
-      formData.append("email", this.form.get("email")?.value);
-      formData.append("message", this.form.get("message")?.value);
+      formData.append('firstname', this.form.get('firstname')?.value);
+      formData.append('lastname', this.form.get('lastname')?.value);
+      formData.append('email', this.form.get('email')?.value);
+      formData.append('message', this.form.get('message')?.value);
       this.isLoading = true; // sending the post request async so it's in progress
       this.submitted = false; // hide the response message on multiple submits
-      this.responseName = this.form.get("name")?.value;
+      this.responseName = this.form.get('firstname')?.value;
       this.form.reset();
-      formDirective.resetForm()
-      this.http.post("https://formspree.io/f/xjvlyjod", formData).subscribe(
-        (response) => {
-
+      formDirective.resetForm();
+      this.http.post('https://formspree.io/f/xjvlyjod', formData).subscribe({
+        next: (response) => {
           this.form.enable(); // re enable the form after a success
           this.submitted = true; // show the response message
           this.isLoading = false; // re enable the submit button
           console.log(response);
-          this.responseMessage = "Thanks, " + this.responseName + " for your feedback!";
+          this.responseMessage =
+            'Thanks, ' + this.responseName + ' for your feedback!';
         },
-        (error) => {
-          this.responseMessage = "Oops! An error occurred... Reload the page and try again.";
+        error: (error) => {
+          this.responseMessage =
+            'Oops! An error occurred... Reload the page and try again.';
           this.form.enable(); // re enable the form after a success
           this.submitted = true; // show the response message
           this.isLoading = false; // re enable the submit button
           console.log(error);
-        }
-      );
+        },
+      });
     }
   }
-  resetForm(){
-    this.initForm()
+  resetForm() {
+    this.initForm();
     this.isLoading = false;
     this.submitted = false;
   }

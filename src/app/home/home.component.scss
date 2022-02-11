@@ -1,9 +1,14 @@
 .huge {
     font-size: 500%;
-    color: aqua;
-    //text-align: center;
+    color: rgb(0, 102, 255);
+    font-family: Abril Fatface;
 }
 
 span {
     color: black;
+}
+
+.home-div {
+    background-image: url(../../assets/images/Steve.jpg);
+    background-size: 10%;
 }

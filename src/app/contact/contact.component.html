@@ -37,7 +37,13 @@
       <h3>Send us your Feedback</h3>
       <p>
         <mat-form-field class="half-width">
-          <input matInput [formControl]="name" name="name" formControlName="name" placeholder="Full Name" type="text"
+          <input matInput [formControl]="firstname" name="firstname" formControlName="firstname" placeholder="First Name" type="text"
+            required>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="half-width">
+          <input matInput [formControl]="lastname" name="lastname" formControlName="lastname" placeholder="Last Name" type="text"
             required>
         </mat-form-field>
       </p>
