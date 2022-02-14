@@ -2,20 +2,18 @@
   <div>
     <h1>About Us</h1>
   </div>
-  <div>
-    <div  *ngIf="about">
-      <mat-card *ngFor="let abt of about">
-        <mat-card-title>
-          <h4>{{abt.title}}</h4>
-        </mat-card-title>
-        <mat-card-content fxLayout="row" fxLayout.sm="column" fxLayout.xs="column"
-        fxLayoutAlign.gt-md=" center" fxLayoutGap="10px" fxLayoutGap.xs="0">
-            <img src="{{ abt.image }}" alt={{abt.alt}}>
-          <p style="margin-right: auto;">
-            {{abt.text}}
-          </p>
-        </mat-card-content>
-      </mat-card>
-    </div>
+  <div *ngIf="about">
+    <mat-card *ngFor="let abt of about">
+      <mat-card-title>
+        <h4>{{abt.title}}</h4>
+      </mat-card-title>
+      <mat-card-content fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign.gt-md=" center"
+        fxLayoutGap="10px" fxLayoutGap.xs="0">
+        <img src="{{ abt.image }}" alt={{abt.alt}}>
+        <p style="margin-right: auto;">
+          {{abt.text}}
+        </p>
+      </mat-card-content>
+    </mat-card>
   </div>
 </div>

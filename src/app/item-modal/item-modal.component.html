@@ -1,0 +1,19 @@
+<p>item-modal works!</p>
+<span>
+    <button mat-button (click)="qty = qty - 1"
+      [disabled]="qty == 0">-</button>
+    Qty: {{qty}}
+    <button mat-button (click)="qty = qty + 1"
+      [disabled]="qty == 20">+</button>
+  </span>
+<button mat-raised-button (click)="closeDialog()">Close</button>
+<img height="300px" width="300px" src="{{ images[0] }}">
+<!--
+modal layout:
+    make +/- btns smaller
+    add x button to close
+    carousel (cycle) images (timed + (manual buttons + manual arrows))
+    counter at footer + price + rating + name on top
+    bound to id of product (to know which images array to cycle)
+    add to cart btn
+-->

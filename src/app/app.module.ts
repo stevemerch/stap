@@ -14,6 +14,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatInputModule } from '@angular/material/input';
 import { MatGridListModule } from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material/card'; 
+import {MatRadioModule} from '@angular/material/radio'; 
+import { MatDialogModule, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+
 
 
 
@@ -28,6 +31,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FourComponent } from './four/four.component';
+import { ItemModalComponent } from './item-modal/item-modal.component';
 
 
 @NgModule({
@@ -39,7 +43,8 @@ import { FourComponent } from './four/four.component';
     AboutComponent,
     HeaderComponent,
     FooterComponent,
-    FourComponent
+    FourComponent,
+    ItemModalComponent
   ],
   imports: [
     BrowserModule,
@@ -55,18 +60,24 @@ import { FourComponent } from './four/four.component';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatListModule,
+    MatDialogModule,
     MatButtonModule,
     FlexLayoutModule,
     MatSelectModule,
     MatCardModule,
     MatSlideToggleModule,
+    MatRadioModule,
     FontAwesomeModule,
     ReactiveFormsModule,
     MatGridListModule,
     MatProgressSpinnerModule,
     MatInputModule
   ],
-  providers: [],
+  providers: [{ provide: MAT_DIALOG_DATA, useValue: {} },
+    {
+      provide: MatDialogRef,
+      useValue: {}
+    },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
