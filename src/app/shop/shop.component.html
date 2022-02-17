@@ -16,11 +16,11 @@
       <mat-card-actions>
         <span>Price: {{ product.price }}$ </span>
         <span>
-          <button mat-button (click)="product.quantity = product.quantity - 1"
-            [disabled]="product.quantity == 0">-</button>
+          <button mat-icon-button (click)="product.quantity = product.quantity - 1"
+            [disabled]="product.quantity == 0"><mat-icon>remove</mat-icon></button>
           Qty: {{product.quantity}}
-          <button mat-button (click)="product.quantity = product.quantity + 1"
-            [disabled]="product.quantity == 20">+</button>
+          <button mat-icon-button (click)="product.quantity = product.quantity + 1"
+            [disabled]="product.quantity == 20"><mat-icon>add</mat-icon></button>
         </span>
         <span>
           <a mat-button (click)="AddToCart()" [disabled]="product.quantity == 0">

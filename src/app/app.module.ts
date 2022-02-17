@@ -15,6 +15,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatGridListModule } from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material/card'; 
 import {MatRadioModule} from '@angular/material/radio'; 
+import {MatIconModule} from '@angular/material/icon';
 import { MatDialogModule, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 
@@ -32,6 +33,7 @@ import { FooterComponent } from './footer/footer.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FourComponent } from './four/four.component';
 import { ItemModalComponent } from './item-modal/item-modal.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -71,7 +73,9 @@ import { ItemModalComponent } from './item-modal/item-modal.component';
     ReactiveFormsModule,
     MatGridListModule,
     MatProgressSpinnerModule,
-    MatInputModule
+    MatIconModule,
+    MatInputModule,
+    NgbModule
   ],
   providers: [{ provide: MAT_DIALOG_DATA, useValue: {} },
     {

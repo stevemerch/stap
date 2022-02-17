@@ -21,8 +21,8 @@ export const PRODUCTS: PRODUCT_SCHEMA[] = [
         "images": [
             "/assets/images/Steve.jpg",
             "/assets/images/Steve.jpg",
-            "",
-            ""
+            "/assets/images/Steve.jpg",
+            "/assets/images/Steve.jpg"
         ],
         "comments": [
             "",
