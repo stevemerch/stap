@@ -12,10 +12,11 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
 import { MatGridListModule } from '@angular/material/grid-list';
-import {MatCardModule} from '@angular/material/card'; 
-import {MatRadioModule} from '@angular/material/radio'; 
-import {MatIconModule} from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card'; 
+import { MatRadioModule } from '@angular/material/radio'; 
+import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 
@@ -50,6 +51,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpClientModule,
     RouterModule.forRoot([
       { path: 'home',  component: HomeComponent },

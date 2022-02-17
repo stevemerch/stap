@@ -1,6 +1,8 @@
 import { Component, OnInit, Optional, Inject, ViewChild } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
+import { faShoppingBag, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+
 
 
 @Component({
@@ -16,6 +18,11 @@ export class ItemModalComponent implements OnInit {
   sizes: Array<string>;
   displayedName: string;
   selectedValue: any;
+  price: number;
+
+  faShop = faShoppingBag;
+  faCart = faShoppingCart;
+
   
 
   constructor(
@@ -25,9 +32,10 @@ export class ItemModalComponent implements OnInit {
     this.qty = data.item.quantity;
     this.images = data.item.images;
     this.sizes = data.item.sizes;
+    this.price = data.item.price;
     this.displayedName = data.item.displayedName;
-    this.selectedValue = this.sizes[0];
    }
+
   ngOnInit(): void {
     this.dialogRef.beforeClosed().subscribe(() => this.closeDialog());
   }
@@ -62,5 +70,6 @@ export class ItemModalComponent implements OnInit {
       this.togglePaused();
     }
   }
-
+  AddToCart(){}
+  BuyNow(){}
 }

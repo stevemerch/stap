@@ -5,7 +5,7 @@ export class PRODUCT_SCHEMA {
     description: string;
     images: Array<string>;
     comments: Array<string>;
-    sizes: Array<string> | null;
+    sizes: Array<string>;
     rating: number;
     price: number;
     quantity: number;
@@ -36,7 +36,7 @@ export const PRODUCTS: PRODUCT_SCHEMA[] = [
         ],
         "rating": 0,
         "price": 0,
-        "quantity": 0
+        "quantity": 1
     },
     {
         "id": 1,
@@ -54,14 +54,14 @@ export const PRODUCTS: PRODUCT_SCHEMA[] = [
             "",
             ""
         ],
-        "sizes": [
-            "",
-            "",
-            ""
+        "sizes":[
+            "Small",
+            "Medium",
+            "Large"
         ],
         "rating": 0,
         "price": 0,
-        "quantity": 0
+        "quantity": 1
     },
     {
         "id": 2,
@@ -80,13 +80,13 @@ export const PRODUCTS: PRODUCT_SCHEMA[] = [
             ""
         ],
         "sizes": [
-            "",
-            "",
-            ""
+            "Small",
+            "Medium",
+            "Large"
         ],
         "rating": 0,
         "price": 0,
-        "quantity": 0
+        "quantity": 1
     },
     {
         "id": 3,
@@ -105,13 +105,13 @@ export const PRODUCTS: PRODUCT_SCHEMA[] = [
             ""
         ],
         "sizes": [
-            "",
-            "",
-            ""
+            "Small",
+            "Medium",
+            "Large"
         ],
         "rating": 0,
         "price": 0,
-        "quantity": 0
+        "quantity": 1
     },
     {
         "id": 4,
@@ -129,9 +129,9 @@ export const PRODUCTS: PRODUCT_SCHEMA[] = [
             "",
             ""
         ],
-        "sizes": null,
+        "sizes": [],
         "rating": 0,
         "price": 0,
-        "quantity": 0
+        "quantity": 1
     }
 ]
