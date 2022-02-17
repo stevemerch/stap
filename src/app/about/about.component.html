@@ -7,12 +7,13 @@
       <mat-card-title>
         <h4>{{abt.title}}</h4>
       </mat-card-title>
-      <mat-card-content fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign.gt-md=" center"
+      <mat-card-content fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign.gt-md="center"
         fxLayoutGap="10px" fxLayoutGap.xs="0">
-        <img src="{{ abt.image }}" alt={{abt.alt}}>
-        <p style="margin-right: auto;">
+        <img src="{{ abt.image }}" alt={{abt.alt}} height="200px" width="200px"> 
+        <p>
           {{abt.text}}
         </p>
+        <span style="flex: 1 1 auto;"></span>
       </mat-card-content>
     </mat-card>
   </div>
