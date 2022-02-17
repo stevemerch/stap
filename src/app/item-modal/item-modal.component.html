@@ -1,39 +1,55 @@
+<div>
 
-<div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign.gt-md=" center" fxLayoutGap="10px"
-  fxLayoutGap.xs="0">
-  <p>{{displayedName}}</p>
-<button mat-icon-button class="close" (click)="closeDialog()">
-  <mat-icon>close</mat-icon>
-</button>
-  <div>
-    <ngb-carousel #carousel [interval]="1000" [pauseOnHover]="pauseOnHover" [pauseOnFocus]="pauseOnFocus"
-      (slide)="onSlide($event)">
-      <ng-template ngbSlide *ngFor="let img of images; index as i">
-        <div class="carousel-caption">
-          <h3>My slide {{i + 1}} title</h3>
-        </div>
-        <div class="picsum-img-wrapper">
-          <img [src]="img" alt="My image {{i + 1}} description" height="300px" width="300px">
-        </div>
-      </ng-template>
-    </ngb-carousel>
-    <!--img height="300px" width="300px" src="{{ images[0] }}"-->
-
-  </div>
   <span>
-    <button mat-icon-button (click)="qty = qty - 1" [disabled]="qty == 0">
-      <mat-icon>remove</mat-icon>
+    <button mat-icon-button class="close" (click)="closeDialog()">
+      <mat-icon>close</mat-icon>
     </button>
-    Qty: {{qty}}
-    <button mat-icon-button (click)="qty = qty + 1" [disabled]="qty == 20">
-      <mat-icon>add</mat-icon>
-    </button>
+    <p>{{displayedName}}</p>
   </span>
+
+  <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign.gt-md=" center" fxLayoutGap="10px"
+    fxLayoutGap.xs="0">
+    <div>
+
+    </div>
+    <div>
+      <ngb-carousel #carousel [interval]="2500" [pauseOnHover]="pauseOnHover" [pauseOnFocus]="pauseOnFocus"
+        (slide)="onSlide($event)">
+        <ng-template ngbSlide *ngFor="let img of images; index as i">
+          <div class="carousel-caption">
+            <h3>My slide {{i + 1}} title</h3>
+          </div>
+          <div class="picsum-img-wrapper">
+            <img [src]="img" alt="My image {{i + 1}} description" height="300px" width="300px">
+          </div>
+        </ng-template>
+      </ngb-carousel>
+    </div>
+    <div>
+      <div *ngIf="sizes">
+        <mat-radio-group  aria-label="Select a size">
+          <mat-radio-button style="margin-right: 1em;" *ngFor="let size of sizes" type="radio" [value]="size"> {{ size }} </mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div>
+        <span>
+          <button mat-icon-button (click)="qty = qty - 1" [disabled]="qty == 0">
+            <mat-icon>remove</mat-icon>
+          </button>
+          {{qty}}
+          <button mat-icon-button (click)="qty = qty + 1" [disabled]="qty == 20">
+            <mat-icon>add</mat-icon>
+          </button>
+        </span>
+      </div>
+    </div>
+  </div>
 </div>
-<!--
-modal layout:
-    carousel (cycle) images (timed + (manual buttons + manual arrows))
-    counter at footer + price + rating + name on top
-    bound to id of product (to know which images array to cycle)
-    add to cart btn
--->
+  <!--
+  modal layout:
+      carousel (cycle) images (timed + (manual buttons + manual arrows))
+      counter at footer + price + rating + name on top
+      add to cart btn
+  -->
+
+

@@ -5,7 +5,7 @@ export class PRODUCT_SCHEMA {
     description: string;
     images: Array<string>;
     comments: Array<string>;
-    sizes: Array<string>;
+    sizes: Array<string> | null;
     rating: number;
     price: number;
     quantity: number;
@@ -129,11 +129,7 @@ export const PRODUCTS: PRODUCT_SCHEMA[] = [
             "",
             ""
         ],
-        "sizes": [
-            "",
-            "",
-            ""
-        ],
+        "sizes": null,
         "rating": 0,
         "price": 0,
         "quantity": 0

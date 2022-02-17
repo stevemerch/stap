@@ -18,7 +18,7 @@
         <span>
           <button mat-icon-button (click)="product.quantity = product.quantity - 1"
             [disabled]="product.quantity == 0"><mat-icon>remove</mat-icon></button>
-          Qty: {{product.quantity}}
+          {{product.quantity}}
           <button mat-icon-button (click)="product.quantity = product.quantity + 1"
             [disabled]="product.quantity == 20"><mat-icon>add</mat-icon></button>
         </span>

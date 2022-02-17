@@ -15,6 +15,7 @@ export class ItemModalComponent implements OnInit {
   images: Array<string>;
   sizes: Array<string>;
   displayedName: string;
+  selectedValue: any;
   
 
   constructor(
@@ -25,6 +26,7 @@ export class ItemModalComponent implements OnInit {
     this.images = data.item.images;
     this.sizes = data.item.sizes;
     this.displayedName = data.item.displayedName;
+    this.selectedValue = this.sizes[0];
    }
   ngOnInit(): void {
     this.dialogRef.beforeClosed().subscribe(() => this.closeDialog());
@@ -38,6 +40,7 @@ export class ItemModalComponent implements OnInit {
   pauseOnIndicator = false;
   pauseOnHover = true;
   pauseOnFocus = true;
+
 
   @ViewChild('carousel', {static : true}) carousel: NgbCarousel;
 
