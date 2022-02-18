@@ -35,6 +35,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FourComponent } from './four/four.component';
 import { ItemModalComponent } from './item-modal/item-modal.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HeaderComponent,
     FooterComponent,
     FourComponent,
-    ItemModalComponent
+    ItemModalComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,

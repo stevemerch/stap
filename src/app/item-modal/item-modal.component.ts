@@ -19,6 +19,7 @@ export class ItemModalComponent implements OnInit {
   displayedName: string;
   selectedValue: any;
   price: number;
+  rating: number;
 
   faShop = faShoppingBag;
   faCart = faShoppingCart;
@@ -34,6 +35,7 @@ export class ItemModalComponent implements OnInit {
     this.sizes = data.item.sizes;
     this.price = data.item.price;
     this.displayedName = data.item.displayedName;
+    this.rating = this.data.rating;
    }
 
   ngOnInit(): void {

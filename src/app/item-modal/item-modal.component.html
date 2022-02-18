@@ -46,22 +46,16 @@
           </button>
         </span>
         <div>
-          <a mat-button (click)="AddToCart()" [disabled]="qty == 0">
+          <a mat-button (click)="AddToCart()" class="full-width" [disabled]="qty == 0">
             <fa-icon [icon]="faShop"></fa-icon> Add to Cart
           </a>
         </div>
         <div>
-          <a mat-button (click)="BuyNow()" [disabled]="qty == 0">
+          <a mat-button (click)="BuyNow()" class="full-width" [disabled]="qty == 0">
             <fa-icon [icon]="faCart"></fa-icon> Buy Now
           </a>
         </div>
       </div>
     </div>
   </div>
-</div>
-<!--
-  modal layout:
-      carousel (cycle) images (timed + (manual buttons + manual arrows))
-      counter at footer + price + rating + name on top
-      add to cart btn
-  -->
+</div>  

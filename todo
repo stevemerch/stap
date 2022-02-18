@@ -3,7 +3,6 @@
 - modal display
     - like dishdetail
     
-- finish "our vision" description
 - cart at top right navbar - display number of items && button for checkout
 
 - scan with nessus / zap proxy
@@ -14,10 +13,8 @@
 
 - security for payment
 
-- footer height 70%
-
-- shopping cart icon
-
 - localstorage for cart
 
 - fix background image too small
+
+move products.ts into service
