@@ -36,18 +36,13 @@ export class ShopComponent implements OnInit {
   }
 
   addToCart(product: PRODUCT_SCHEMA) {
-    this.productService.addToCart(product);
-    this.products[product.id].added = true;
+    this.productService.addToCart(product, 'Small');
     window.alert('Your product has been added to the cart!');
   }
 
   openModal(id:number): void {
     const dialogRef = this.dialog.open(ItemModalComponent, {
       data: {item: this.products[id]}
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      this.products[id].quantity = result.data;
     });
   }
 

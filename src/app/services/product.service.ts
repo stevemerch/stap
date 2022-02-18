@@ -1,21 +1,25 @@
 import { Injectable } from '@angular/core';
-import { PRODUCTS, PRODUCT_SCHEMA } from '../shared/products';
+import { PRODUCTS, PRODUCT_SCHEMA, ITEM } from '../shared/products';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  items: PRODUCT_SCHEMA[] = [];
+  items: ITEM[] = [];
 
   constructor() { }
   getProducts(){
     return PRODUCTS;
   }
 
-  addToCart(product: PRODUCT_SCHEMA) {
-    if (product.quantity > 0){
-      this.items.push(product);
-    }
+  addToCart(product: PRODUCT_SCHEMA, selectedsize: string) {
+    const item: ITEM = new ITEM();
+    item.id = product.id;
+    item.name = product.name;
+    item.quantity = product.quantity;
+    item.size = selectedsize;
+    this.items.push(item);
+    
     console.log(JSON.stringify(this.items));
   }
 

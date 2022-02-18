@@ -12,6 +12,13 @@ export class PRODUCT_SCHEMA {
     added: boolean;
 }
 
+export class ITEM {
+    id: number;
+    name: string;
+    quantity: number;
+    size: string;
+}
+
 
 export const PRODUCTS: PRODUCT_SCHEMA[] = [
     {
