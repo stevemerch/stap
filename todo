@@ -3,7 +3,6 @@
 - modal display
     - like dishdetail
     
-- finish "our vision" description
 - cart at top right navbar - display number of items && button for checkout
 
 - scan with nessus / zap proxy
@@ -16,3 +15,5 @@
 
 
 - fix background image too small
+
+move products.ts into service

@@ -18,7 +18,9 @@ export class ItemModalComponent implements OnInit {
   products: PRODUCT_SCHEMA[] = [];
   product: PRODUCT_SCHEMA;
 
+
   selectedSize: string = "";
+
 
   faShop = faShoppingBag;
   faCart = faShoppingCart;
