@@ -9,6 +9,7 @@ export class PRODUCT_SCHEMA {
     rating: number;
     price: number;
     quantity: number;
+    added: boolean;
 }
 
 
@@ -36,7 +37,8 @@ export const PRODUCTS: PRODUCT_SCHEMA[] = [
         ],
         "rating": 0,
         "price": 0,
-        "quantity": 1
+        "quantity": 1,
+        "added": false
     },
     {
         "id": 1,
@@ -61,7 +63,8 @@ export const PRODUCTS: PRODUCT_SCHEMA[] = [
         ],
         "rating": 0,
         "price": 0,
-        "quantity": 1
+        "quantity": 1,
+        "added": false
     },
     {
         "id": 2,
@@ -86,7 +89,8 @@ export const PRODUCTS: PRODUCT_SCHEMA[] = [
         ],
         "rating": 0,
         "price": 0,
-        "quantity": 1
+        "quantity": 1,
+        "added": false
     },
     {
         "id": 3,
@@ -111,7 +115,8 @@ export const PRODUCTS: PRODUCT_SCHEMA[] = [
         ],
         "rating": 0,
         "price": 0,
-        "quantity": 1
+        "quantity": 1,
+        "added": false
     },
     {
         "id": 4,
@@ -132,6 +137,7 @@ export const PRODUCTS: PRODUCT_SCHEMA[] = [
         "sizes": [],
         "rating": 0,
         "price": 0,
-        "quantity": 1
+        "quantity": 1,
+        "added": false
     }
 ]

@@ -14,16 +14,16 @@
           alt={{product.name}}>
       </mat-card-content>
       <mat-card-actions>
-        <span>Price: {{ product.price }}$ </span>
+        <span>Price: {{ product.price | currency}} </span>
         <span>
-          <button mat-icon-button (click)="product.quantity = product.quantity - 1"
+          <button mat-icon-button mat-stroked-button (click)="product.quantity = product.quantity - 1"
             [disabled]="product.quantity == 0"><mat-icon>remove</mat-icon></button>
           {{product.quantity}}
-          <button mat-icon-button (click)="product.quantity = product.quantity + 1"
+          <button mat-icon-button mat-stroked-button (click)="product.quantity = product.quantity + 1"
             [disabled]="product.quantity == 20"><mat-icon>add</mat-icon></button>
         </span>
         <span>
-          <a mat-button (click)="AddToCart()" [disabled]="product.quantity == 0">
+          <a mat-button (click)="addToCart(product)" [disabled]="product.quantity == 0 || product.added">
             <fa-icon [icon]="faShop"></fa-icon> Add to Cart
           </a>
         </span>

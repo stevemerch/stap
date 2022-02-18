@@ -26,7 +26,7 @@
     </div>
     <div>
       <h3>{{displayedName}}</h3>
-      <p>Price: {{price}}$ </p>
+      <p>Price: {{price | currency}} </p>
       <p></p>
       <div *ngIf="sizes">
         <mat-radio-group aria-label="Select a size">
@@ -37,21 +37,21 @@
       </div>
       <div>
         <span>
-          <button mat-icon-button (click)="qty = qty - 1" [disabled]="qty == 0">
+          <button mat-icon-button mat-stroked-button (click)="qty = qty - 1" [disabled]="qty == 0">
             <mat-icon>remove</mat-icon>
           </button>
           {{qty}}
-          <button mat-icon-button (click)="qty = qty + 1" [disabled]="qty == 20">
+          <button mat-icon-button mat-stroked-button (click)="qty = qty + 1" [disabled]="qty == 20">
             <mat-icon>add</mat-icon>
           </button>
         </span>
         <div>
-          <a mat-button (click)="AddToCart()" [disabled]="qty == 0">
+          <a mat-button (click)="addToCart()" [disabled]="qty == 0">
             <fa-icon [icon]="faShop"></fa-icon> Add to Cart
           </a>
         </div>
         <div>
-          <a mat-button (click)="BuyNow()" [disabled]="qty == 0">
+          <a mat-button (click)="buyNow()" [disabled]="qty == 0">
             <fa-icon [icon]="faCart"></fa-icon> Buy Now
           </a>
         </div>
