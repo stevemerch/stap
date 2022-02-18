@@ -3,7 +3,7 @@
     <button mat-icon-button class="close" (click)="closeDialog()">
       <mat-icon>close</mat-icon>
     </button>
-    <h3>{{displayedName}}</h3>
+    <h3>{{product.displayedName}}</h3>
   </span>
 
   <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign.gt-md=" center" fxLayoutGap="10px"
@@ -14,7 +14,7 @@
     <div>
       <ngb-carousel #carousel [interval]="2500" [pauseOnHover]="pauseOnHover" [pauseOnFocus]="pauseOnFocus"
         (slide)="onSlide($event)">
-        <ng-template ngbSlide *ngFor="let img of images; index as i">
+        <ng-template ngbSlide *ngFor="let img of product.images; index as i">
           <div class="carousel-caption">
             <h3>My slide {{i + 1}} title</h3>
           </div>
@@ -25,37 +25,40 @@
       </ngb-carousel>
     </div>
     <div>
-      <h3>{{displayedName}}</h3>
-      <p>Price: {{price}}$ </p>
+      <h3>{{product.displayedName}}</h3>
+      <p>Price: {{product.price | currency}} </p>
       <p></p>
-      <div *ngIf="sizes">
-        <mat-radio-group aria-label="Select a size">
-          <mat-radio-button style="margin-right: 1em;" *ngFor="let size of sizes; let idx = index" type="radio"
+      <div *ngIf="product.sizes">
+        <mat-radio-group aria-label="Select a size" [(ngModel)]="selectedSize">
+          <mat-radio-button style="margin-right: 1em;" *ngFor="let size of product.sizes; let idx = index" type="radio"
             [value]="size" [checked]="(idx === 0)">
-            {{ size }} </mat-radio-button>
+            {{size}} </mat-radio-button>
         </mat-radio-group>
       </div>
+      <p></p>
       <div>
         <span>
-          <button mat-icon-button (click)="qty = qty - 1" [disabled]="qty == 0">
+          <button mat-icon-button mat-stroked-button (click)="product.quantity = product.quantity - 1" [disabled]="product.quantity == 0">
             <mat-icon>remove</mat-icon>
           </button>
-          {{qty}}
-          <button mat-icon-button (click)="qty = qty + 1" [disabled]="qty == 20">
+          {{product.quantity}}
+          <button mat-icon-button mat-stroked-button (click)="product.quantity = product.quantity + 1" [disabled]="product.quantity == 20">
             <mat-icon>add</mat-icon>
           </button>
         </span>
-        <div>
-          <a mat-button (click)="AddToCart()" class="full-width" [disabled]="qty == 0">
+        <div class="full-width">
+          <a mat-button (click)="addToCart(product)" [disabled]="product.quantity == 0">
             <fa-icon [icon]="faShop"></fa-icon> Add to Cart
           </a>
         </div>
-        <div>
-          <a mat-button (click)="BuyNow()" class="full-width" [disabled]="qty == 0">
+        <div class="full-width">
+          <a mat-button (click)="buyNow()" [disabled]="product.quantity == 0">
+
             <fa-icon [icon]="faCart"></fa-icon> Buy Now
           </a>
         </div>
       </div>
     </div>
   </div>
-</div>  
+</div>
+

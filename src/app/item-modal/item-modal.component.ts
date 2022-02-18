@@ -2,6 +2,8 @@ import { Component, OnInit, Optional, Inject, ViewChild } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
 import { faShoppingBag, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { ProductService } from '../services/product.service';
+import { PRODUCT_SCHEMA} from '../shared/products';
 
 
 
@@ -12,14 +14,13 @@ import { faShoppingBag, faShoppingCart } from '@fortawesome/free-solid-svg-icons
 })
 export class ItemModalComponent implements OnInit {
 
+  id: number;
+  products: PRODUCT_SCHEMA[] = [];
+  product: PRODUCT_SCHEMA;
 
-  qty: number;
-  images: Array<string>;
-  sizes: Array<string>;
-  displayedName: string;
-  selectedValue: any;
-  price: number;
-  rating: number;
+
+  selectedSize: string = "";
+
 
   faShop = faShoppingBag;
   faCart = faShoppingCart;
@@ -28,21 +29,21 @@ export class ItemModalComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<ItemModalComponent>,
-    @Optional() @Inject(MAT_DIALOG_DATA) public data: any
-  ) {
-    this.qty = data.item.quantity;
-    this.images = data.item.images;
-    this.sizes = data.item.sizes;
-    this.price = data.item.price;
-    this.displayedName = data.item.displayedName;
-    this.rating = this.data.rating;
-   }
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: any,
+    private productService: ProductService
+  ) { this.id = data.item.id  }
 
   ngOnInit(): void {
-    this.dialogRef.beforeClosed().subscribe(() => this.closeDialog());
+    this.getProducts();
   }
+
+  getProducts(): void {
+    this.products = this.productService.getProducts();
+    this.product = this.products[this.id];
+  }
+
   closeDialog() {
-    this.dialogRef.close({ event: 'close', data: this.qty });
+    this.dialogRef.close();
   }
 
   paused = false;
@@ -72,6 +73,9 @@ export class ItemModalComponent implements OnInit {
       this.togglePaused();
     }
   }
-  AddToCart(){}
-  BuyNow(){}
+  addToCart(product: PRODUCT_SCHEMA) {
+    this.productService.addToCart(product, this.selectedSize);
+    window.alert('Your product has been added to the cart!');
+  }
+  buyNow(){}
 }

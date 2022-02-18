@@ -18,6 +18,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatRadioModule } from '@angular/material/radio'; 
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { ProductService } from './services/product.service';
 
 
 
@@ -85,7 +86,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
     {
       provide: MatDialogRef,
       useValue: {}
-    },],
+    },
+  ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
