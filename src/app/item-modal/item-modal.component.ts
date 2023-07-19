@@ -19,7 +19,7 @@ export class ItemModalComponent implements OnInit {
   product: PRODUCT_SCHEMA;
 
 
-  selectedSize: string = "";
+  selectedSize: string;
 
 
   faShop = faShoppingBag;

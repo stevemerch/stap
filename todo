@@ -1,5 +1,7 @@
 - shop component grid cards
 - checkout component
+    - cart service 
+    - update cart top right corner
 - modal display
     - like dishdetail
     
