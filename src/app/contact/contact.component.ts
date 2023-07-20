@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {
-  FormBuilder,
-  FormGroup,
-  FormControl,
+  UntypedFormBuilder,
+  UntypedFormGroup,
+  UntypedFormControl,
   Validators,
   FormGroupDirective,
 } from '@angular/forms';
@@ -17,29 +17,29 @@ import { faMailBulk, faPhoneSquare } from '@fortawesome/free-solid-svg-icons';
 export class ContactComponent implements OnInit {
   faMailBulk = faMailBulk;
   faPhoneSquare = faPhoneSquare;
-  form: FormGroup;
-  firstname: FormControl;
-  lastname: FormControl;
-  email: FormControl;
-  message: FormControl;
-  honeypot: FormControl; // we will use this to prevent spam
+  form: UntypedFormGroup;
+  firstname: UntypedFormControl;
+  lastname: UntypedFormControl;
+  email: UntypedFormControl;
+  message: UntypedFormControl;
+  honeypot: UntypedFormControl; // we will use this to prevent spam
   submitted: boolean = false; // show and hide the success message
   isLoading: boolean = false; // disable the submit button if we're loading
   responseName: string;
   responseMessage: string; // the response message to show to the user
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) {
+  constructor(private formBuilder: UntypedFormBuilder, private http: HttpClient) {
     this.initForm();
   }
 
   initForm() {
-    this.firstname = new FormControl('', [Validators.required]);
-    this.lastname = new FormControl('', [Validators.required]);
-    this.email = new FormControl('', [Validators.required, Validators.email]);
-    this.message = new FormControl('', [
+    this.firstname = new UntypedFormControl('', [Validators.required]);
+    this.lastname = new UntypedFormControl('', [Validators.required]);
+    this.email = new UntypedFormControl('', [Validators.required, Validators.email]);
+    this.message = new UntypedFormControl('', [
       Validators.required,
       Validators.maxLength(512),
     ]);
-    this.honeypot = new FormControl(''); // we will use this to prevent spam
+    this.honeypot = new UntypedFormControl(''); // we will use this to prevent spam
     this.form = this.formBuilder.group({
       firstname: this.firstname,
       lastname: this.lastname,
