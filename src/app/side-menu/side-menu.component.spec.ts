@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 
-import { HeaderComponent } from './header.component';
+import { SideMenuComponent } from './side-menu.component';
 
-describe('HeaderComponent', () => {
-  let component: HeaderComponent;
-  let fixture: ComponentFixture<HeaderComponent>;
+describe('SideMenuComponent', () => {
+  let component: SideMenuComponent;
+  let fixture: ComponentFixture<SideMenuComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [HeaderComponent],
-      schemas: [NO_ERRORS_SCHEMA]
+      declarations: [SideMenuComponent],
+      schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(HeaderComponent);
+    fixture = TestBed.createComponent(SideMenuComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

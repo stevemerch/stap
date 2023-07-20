@@ -1,20 +1,29 @@
-import { Component, OnInit } from '@angular/core';
-import { faHome, faInfo, faShoppingBag, faAddressCard, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { Component } from '@angular/core';
+import { SidebarToggleService } from '../services/sidebar-toggle.service';
+
+import { ITEM } from '../shared/products';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
-  constructor() { }
+  constructor(private cartService: CartService,
+              public toggleService: SidebarToggleService) { }
+
+  items: ITEM[] = [];
 
   ngOnInit(): void {
+    this.cartService.itemSubject.subscribe({
+      next: (message) => {
+        this.items = this.cartService.getItems();
+      }
+    })
+    // used to get localstorage from service (after subscribing)
+    this.cartService.itemSubject.next("GetLocalStorage"); 
   }
-  faHome = faHome;
-  faInfo = faInfo;
-  faShop = faShoppingBag;
-  faAddress = faAddressCard;
-  faShoppingCart = faShoppingCart;
+
 }

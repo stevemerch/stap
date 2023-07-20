@@ -14,6 +14,7 @@ module.exports = function (config) {
     ],
     client: {
       jasmine: {
+        seed: 87879
         // you can add configuration options for Jasmine here
         // the possible options are listed at https://jasmine.github.io/api/edge/Configuration.html
         // for example, you can disable the random execution with `random: false`
@@ -33,12 +34,7 @@ module.exports = function (config) {
       ]
     },
     reporters: ['progress', 'kjhtml'],
-    port: 9876,
-    colors: true,
-    logLevel: config.LOG_INFO,
-    autoWatch: true,
     browsers: ['Chrome'],
-    singleRun: false,
     restartOnFileChange: true
   });
 };

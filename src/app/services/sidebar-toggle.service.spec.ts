@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ProductService } from './product.service';
+import { SidebarToggleService } from './sidebar-toggle.service';
 
-describe('ProductService', () => {
-  let service: ProductService;
+describe('SidebarToggleService', () => {
+  let service: SidebarToggleService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ProductService);
+    service = TestBed.inject(SidebarToggleService);
   });
 
   it('should be created', () => {

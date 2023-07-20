@@ -1,11 +1,11 @@
-export class ABOUT_SCHEMA {
-    id: string;
-    name: string;
-    title: string;
-    image: string;
-    alt: string;
-    text: string;
-    footer: string;
+export interface ABOUT_SCHEMA {
+    readonly id: string;
+    readonly name: string;
+    readonly title: string;
+    readonly image: string;
+    readonly alt: string;
+    readonly text: string;
+    readonly footer: string;
 }
 
 export const ABOUT: ABOUT_SCHEMA[] = [
