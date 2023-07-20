@@ -1,18 +1,14 @@
 <mat-toolbar color="primary">
-  <span><img src="/assets/images/logo.jpg" height=30 width=30></span>
-  <a mat-button routerLink="/home"><fa-icon [icon]="faHome"></fa-icon> Home</a>
-  <a mat-button routerLink="/about"><fa-icon [icon]="faInfo"></fa-icon> About</a>
-  <a mat-button routerLink="/shop"><fa-icon [icon]="faShop"></fa-icon> Shop</a>
-  <a mat-button routerLink="/contact"><fa-icon [icon]="faAddress"></fa-icon> Contact</a>
+  <span><img src="/assets/logo.jpg" height=30 width=30></span>
+  <a mat-button routerLink="/home"><mat-icon>home</mat-icon> Home</a>
+  <a mat-button routerLink="/about"><mat-icon>info</mat-icon> About</a>
+  <a mat-button routerLink="/order"><mat-icon>store</mat-icon>  Order</a>
+  <a mat-button routerLink="/contact"><mat-icon>contacts</mat-icon> Contact</a>
   <span class="flex-spacer"></span>
-  <!--
-  bind click for cart to checkout service (global function)
-  
-  checkout: 
-   if no data (honeypot), display error.
-   else: get data from component (service) inject into component, and enable checkout!
-    -->
-
-  <a mat-button><fa-icon [icon]="faShoppingCart"></fa-icon> Buy</a>
+  <a mat-icon-button (click)="toggleService.toggleMenu()" [disabled]="items.length == 0" [hidden]="!toggleService.showCart"><!--ngif items -->
+    <mat-icon matBadgeColor="accent" matBadge="{{ items.length }}" [matBadgeHidden]="items.length == 0" aria-label="View Cart">
+      shopping_cart
+    </mat-icon>
+  </a>
 </mat-toolbar>
 

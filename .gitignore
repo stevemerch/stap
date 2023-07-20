@@ -40,9 +40,18 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
-*.py
-todo
 
+
+_favicon.ico
+.env
+.yarnrc
+.yarn
+package-lock.json
+*.log
+notes.md
+todo
+build.py
+.vscode
+pw.py
 misc/
 /.firebase
-todo

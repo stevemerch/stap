@@ -22,3 +22,8 @@ a:hover {
 .flex-spacer {
     flex: 1 1 auto;
 }
+
+.fixed-header {
+    position: fixed;
+    z-index: 99;
+  }

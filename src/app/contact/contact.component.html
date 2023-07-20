@@ -1,3 +1,4 @@
+<!--
 <div class="container" fxLayout="column" fxLayoutGap="10px">
   <div fxFlex>
     <div>
@@ -5,7 +6,6 @@
       <hr>
     </div>
   </div>
-
   <div fxFlex>
     <h3>Location Information</h3>
     <div fxLayout="column" fxLayout.gt-sm="row">
@@ -16,10 +16,10 @@
           including city, state<br>
           and country etc.<br>
           <i>
-            <fa-icon [icon]="faPhoneSquare"></fa-icon>
+            <mat-icon>phone</mat-icon>
           </i>: +1 646 601 9495<br>
           <i>
-            <fa-icon [icon]="faMailBulk"></fa-icon>
+            <mat-icon>mail</mat-icon>
           </i>:
           <a href="mailto:stapmerch@gmail.com">stapmerch@gmail.com</a>
         </address>
@@ -83,4 +83,69 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+-->
+
+  <h3>Contact us</h3>
+  <div style="display: table; width: 100%;">
+    <div style="display: table-row;">
+      <div style="display: table-cell; width: 50%; padding-left: 20px;">
+        <h4>Our Address</h4>
+        <address>
+          Need to add address<br>
+          including city, state<br>
+          and country etc.<br>
+          <i>
+            <mat-icon>phone</mat-icon>
+          </i>: +1 646 601 9495<br>
+          <i>
+            <mat-icon>mail</mat-icon>
+          </i>:
+          <a href="mailto:stapmerch@gmail.com">stapmerch@gmail.com</a>
+        </address>
+        <p></p>
+      </div>
+      <div style="display: table-cell; width: 40%;">
+        <h4>Map of our Location</h4>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12109.127704881028!2d-73.7864304660204!3d40.64571536942463!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c26658b6ce0751%3A0xc42d2bc3d0b8bc58!2sTWA%20Hotel!5e0!3m2!1sen!2sil!4v1644526001267!5m2!1sen!2sil" width="300" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        <p>change location lol</p>
+      </div>
+    </div>
+  </div>  
+  <style>
+    @media (max-width: 600px) {
+      /* On smaller screens (phones), set display to block */
+      div[style^="display: table-cell"] {
+        display: block;
+        width: 100%;
+        padding-left: 0;
+      }
+    }
+  </style>
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <p>
+      <mat-form-field class="half-width">
+        <input matInput formControlName="name" id="name" name="name" 
+        placeholder="First Name" type="text" required>
+      </mat-form-field>
+      <mat-form-field class="half-width">
+        <input matInput formControlName="email" id="email" name="email" 
+         placeholder="Email Address" type="email" required>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field class="full-width">
+        <textarea matInput name="message" formControlName="message" placeholder="Your Feedback" rows=12>
+          </textarea>
+      </mat-form-field>
+    </p>
+    <button mat-button class="button" type="submit" [disabled]="contactForm.invalid">Submit</button>
+    <input [formControl]="honeypot" [hidden]="true" type="text" />
+  </form>
+  <div [hidden]="!isLoading">
+    <h3>Submitting Form</h3>
+    <mat-spinner></mat-spinner>
+    <br>
   </div>

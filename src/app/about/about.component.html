@@ -3,17 +3,21 @@
     <h1>About Us</h1>
   </div>
   <div *ngIf="about">
-    <mat-card *ngFor="let abt of about">
+    <mat-card *ngFor="let abt of about" style="display: table; width: 100%;">
       <mat-card-title>
-        <h4>{{abt.title}}</h4>
+        <h4>{{ abt.title }}</h4>
       </mat-card-title>
-      <mat-card-content fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign.gt-md="center"
-        fxLayoutGap="10px" fxLayoutGap.xs="0">
-        <img src="{{ abt.image }}" alt={{abt.alt}} height="200px" width="200px"> 
-        <p>
-          {{abt.text}}
-        </p>
-        <span style="flex: 1 1 auto;"></span>
+      <mat-card-content>
+        <div style="display: table-row;">
+          <div style="display: table-cell; vertical-align: top; padding-right: 20px; min-width: 205px;">
+            <img src="{{ abt.image }}" alt="{{ abt.alt }}" height="200px" width="200px">
+          </div>
+          <div style="display: table-cell;">
+            <p>
+              {{ abt.text }}
+            </p>
+          </div>
+        </div>
       </mat-card-content>
     </mat-card>
   </div>

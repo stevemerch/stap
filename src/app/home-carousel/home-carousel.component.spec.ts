@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 
-import { HeaderComponent } from './header.component';
+import { HomeCarouselComponent } from './home-carousel.component';
 
-describe('HeaderComponent', () => {
-  let component: HeaderComponent;
-  let fixture: ComponentFixture<HeaderComponent>;
+describe('HomeCarouselComponent', () => {
+  let component: HomeCarouselComponent;
+  let fixture: ComponentFixture<HomeCarouselComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [HeaderComponent],
+      declarations: [HomeCarouselComponent],
       schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(HeaderComponent);
+    fixture = TestBed.createComponent(HomeCarouselComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
