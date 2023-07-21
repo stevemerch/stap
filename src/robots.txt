@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://stap-merch.web.app/sitemap.xml
