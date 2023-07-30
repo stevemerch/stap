@@ -50,7 +50,7 @@ export class ContactComponent {
       formData.append('Email', this.contactForm.get('email')?.value);
       formData.append('message', this.contactForm.get('message')?.value);
 
-      this.http.post('https://formspree.io/f/xjvlyjod', formData).subscribe({
+      this.http.post('https://formspree.io/f/xdoraalw', formData).subscribe({
         next: (response) => {
           this.submitted = true;
           this.isLoading = false;

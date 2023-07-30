@@ -57,7 +57,7 @@ export class CheckoutComponent {
       formData.append('Order', this.sanitizeOrder(this.cartService.getItems())); // clean up order items
       formData.append('Total', this.sumTotal.toString() + ' Shekels');
 
-      this.http.post('https://formspree.io/f/xjvlyjod', formData).subscribe({
+      this.http.post('https://formspree.io/f/xdoraalw', formData).subscribe({
         next: (response) => {
           this.submitted = true;
           this.isLoading = false;

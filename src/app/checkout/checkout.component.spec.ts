@@ -92,7 +92,7 @@ describe('CheckoutComponent', () => {
 
     // Act
     component.onSubmit();
-    const req = httpMock.expectOne('https://formspree.io/f/xjvlyjod');
+    const req = httpMock.expectOne('https://formspree.io/f/xdoraalw');
     req.flush(of({}));
 
     // Assert
@@ -124,7 +124,7 @@ describe('CheckoutComponent', () => {
 
     // Act
     component.onSubmit();
-    const req = httpMock.expectOne('https://formspree.io/f/xjvlyjod');
+    const req = httpMock.expectOne('https://formspree.io/f/xdoraalw');
     
     req.error(new ErrorEvent('An error occurred'));
 
